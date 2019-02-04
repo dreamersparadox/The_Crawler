@@ -3,10 +3,10 @@ A basic web crawler using JSoup
 
 It can -
 
-1. Get links from a domain
-2. Get Images
-3. Get Style Sheets
-4. Get Scripts
+        1. Get links from a domain
+        2. Get Images
+        3. Get Style Sheets
+        4. Get Scripts
 
 Images, style sheets and scripts can be grabbed -
 
