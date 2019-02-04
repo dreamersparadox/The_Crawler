@@ -112,12 +112,19 @@ public class TheCrawler
 		
 		for (Element src : media) 
         {
-            if (src.tagName().equals("script"))
-            {
-            	 FileWriter fw = new FileWriter(fname,true);
-            	 fw.write(src.attr("abs:src")+"\n");
-            	 fw.close();
-            }
+			try
+			{
+				if (src.tagName().equals("script"))
+				{
+					FileWriter fw = new FileWriter(fname,true);
+					fw.write(src.attr("abs:src")+"\n");
+					fw.close();
+				}
+			}
+			catch (Exception e)
+			{
+				continue;
+			}
         }
 	}
 
@@ -173,12 +180,19 @@ public class TheCrawler
 		
 		for (Element link : imports) 
         {
-        	if(link.attr("rel").equalsIgnoreCase("stylesheet"))
-        	{
-        		FileWriter fw = new FileWriter(fname,true);
-            	fw.write(link.attr("abs:href")+"\n");
-            	fw.close();
-        	}
+			try
+			{
+				if(link.attr("rel").equalsIgnoreCase("stylesheet"))
+				{
+					FileWriter fw = new FileWriter(fname,true);
+					fw.write(link.attr("abs:href")+"\n");
+					fw.close();
+				}
+			}
+			catch (Exception e)
+			{
+				continue;
+			}
         }
 	}
 
@@ -234,12 +248,19 @@ public class TheCrawler
 		
 		for (Element src : media) 
         {
-            if (src.tagName().equals("img"))
-            {
-            	 FileWriter fw = new FileWriter(fname,true);
-            	 fw.write(src.attr("abs:src")+"\n");
-            	 fw.close();
-            }
+			try
+			{
+				if (src.tagName().equals("img"))
+				{
+					FileWriter fw = new FileWriter(fname,true);
+					fw.write(src.attr("abs:src")+"\n");
+					fw.close();
+				}
+			}
+			catch (Exception e)
+			{
+				continue;
+			}
         }
 	}
 
