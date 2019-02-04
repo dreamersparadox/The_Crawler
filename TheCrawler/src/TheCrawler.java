@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -77,6 +78,7 @@ public class TheCrawler
 				@SuppressWarnings("unused") File file = new File(fname);
 				
 				scriptList(url1, fname);
+				stripDuplicatesFromFile(fname);
 				break;
 				
 			case 2:
@@ -97,6 +99,7 @@ public class TheCrawler
 					line = reader.readLine();
 				}
 				reader.close();
+				stripDuplicatesFromFile(fname2);
 				break;
 				
 			default:
@@ -146,6 +149,7 @@ public class TheCrawler
 				File file = new File(fname);
 				
 				ssList(url1, fname);
+				stripDuplicatesFromFile(fname);
 				break;
 				
 			case 2:
@@ -166,6 +170,7 @@ public class TheCrawler
 					line = reader.readLine();
 				}
 				reader.close();
+				stripDuplicatesFromFile(fname2);
 				break;
 				
 			default:
@@ -213,6 +218,7 @@ public class TheCrawler
 				fname = fname+".txt";
 				File file = new File(fname);
 				imgList(url1, fname);
+				stripDuplicatesFromFile(fname);
 				break;
 				
 			case 2:
@@ -233,6 +239,7 @@ public class TheCrawler
 					line = reader.readLine();
 				}
 				reader.close();
+				stripDuplicatesFromFile(fname2);
 				break;
 				
 			default:
@@ -337,4 +344,25 @@ public class TheCrawler
         ulinks.addAll(set); 
         	
 	}
+	
+	public static void stripDuplicatesFromFile(String filename) throws IOException 
+	{
+	    BufferedReader reader = new BufferedReader(new FileReader(filename));
+	    Set<String> lines = new HashSet<String>(10000); // maybe should be bigger
+	    String line;
+	    while ((line = reader.readLine()) != null) 
+	    {
+	        lines.add(line);
+	    }
+	    reader.close();
+	    BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+	    for (String unique : lines) 
+	    {
+	        writer.write(unique);
+	        writer.newLine();
+	    }
+	    writer.close();
+	}
+	
+	
 }
